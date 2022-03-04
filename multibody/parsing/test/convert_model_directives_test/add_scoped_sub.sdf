@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<sdf version="1.9">
+  <model name="add_scoped_sub">
+    <model name="simple_model">
+      <include merge="true">
+        <uri>simple_model.sdf</uri>
+      </include>
+      <frame name="sub_added_frame">
+        <pose relative_to="frame">10 20 30   0 0 0</pose>
+      </frame>
+      <frame name="sub_added_frame_explicit">
+        <pose relative_to="frame">10 20 30   0 0 0</pose>
+      </frame>
+    </model>
+    <include>
+      <name>extra_model</name>
+      <uri>simple_model.sdf</uri>
+      <placement_frame>base</placement_frame>
+      <pose relative_to="simple_model::frame"/>
+    </include>
+    <joint name="simple_model__frame___to___extra_model__base___weld_joint" type="fixed">
+      <parent>simple_model::frame</parent>
+      <child>extra_model::base</child>
+    </joint>
+  </model>
+</sdf>

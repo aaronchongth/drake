@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<sdf version="1.9">
+  <model name="add_scoped_mid">
+    <model name="nested">
+      <include merge="true">
+        <uri>add_scoped_sub.sdf</uri>
+      </include>
+      <!-- this is valid
+      <frame name="top_added_frame" attached_to="simple_model">
+        <pose relative_to="sub_added_frame">5 10 15   0 0 0</pose>
+      </frame>
+      -->
+    </model>
+    <frame name="simple_model_test_frame" attached_to="nested">
+      <pose relative_to="nested::simple_model::__model__">0 0 0   0 0 0</pose>
+    </frame>
+    <!-- this is valid
+    <frame name="top_added_frame" attached_to="nested::simple_model">
+      <pose relative_to="nested::sub_added_frame"/>
+    </frame>
+    -->
+  </model>
+</sdf>
